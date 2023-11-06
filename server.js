@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 app.use(express.json());
 
+// database for users
 const posts = [
     {
         username: "Kyle",
@@ -19,10 +20,8 @@ const posts = [
 ]
 
 app.get("/posts", authenticateToken, (req, res) => {
-    res.json({
-        "header": req.headers,
-        "body": posts
-    });
+    
+    res.json(posts.filter((post) => post.username == req.user.name));
 })
 
 app.post("/login", (req, res) => {
@@ -40,7 +39,7 @@ function authenticateToken(req, res, next) {
     // Example of authorization part of header: "authorization": "Bearer reugndsvbb23409thbsenfd..."
 
     const authHeader = req.headers["authorization"];
-    const token = authHeader.split(" ")[1] ?? null;
+    const token = authHeader && authHeader.split(" ")[1];
 
     if (token == null) return res.sendStatus(401);
 
