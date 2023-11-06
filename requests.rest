@@ -1,6 +1,14 @@
 # get user infos by sending token in authorization header on server 1 (port: 3000)
 GET http://localhost:3000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4MjYwMX0.QPI4uWArW7u4OHYqt-Vw8Fp4yGH3oEv6GNL5MB6suho
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NTkzMiwiZXhwIjoxNjk5Mjg1OTQ3fQ.sAHoy8SaBBLZKYMOxDjuDmtWUB5ZX91qKSW5B9RyMt4
+###
+
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NTg4N30.7x_YtlRXsndxlOoFSWLyqfI1huE7VlGYcz7gKw5zCN8"
+}
 
 ###
 
