@@ -1,5 +1,11 @@
-# get user infos by sending token in authorization header
+# get user infos by sending token in authorization header on server 1 (port: 3000)
 GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4MjYwMX0.QPI4uWArW7u4OHYqt-Vw8Fp4yGH3oEv6GNL5MB6suho
+
+###
+
+# get user infos by sending token in authorization header on server 2 (port: 4000)
+GET http://localhost:4000/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4MjYwMX0.QPI4uWArW7u4OHYqt-Vw8Fp4yGH3oEv6GNL5MB6suho
 
 ###
