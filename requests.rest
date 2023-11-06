@@ -2,13 +2,24 @@
 GET http://localhost:3000/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NTkzMiwiZXhwIjoxNjk5Mjg1OTQ3fQ.sAHoy8SaBBLZKYMOxDjuDmtWUB5ZX91qKSW5B9RyMt4
 ###
-
+# Generate a new access token with refresh token
 POST http://localhost:4000/token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NTg4N30.7x_YtlRXsndxlOoFSWLyqfI1huE7VlGYcz7gKw5zCN8"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NjQ4Mn0.g3P3WQxbNOLc4VkQP1Otz5cFrWbcXp0knsTDXxHqrtA"
 }
+
+###
+# Delete a refresh token (e.g., above refresh token)
+DELETE http://localhost:4000/logout
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4NjQ4Mn0.g3P3WQxbNOLc4VkQP1Otz5cFrWbcXp0knsTDXxHqrtA"
+}
+
+
 
 ###
 
