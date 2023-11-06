@@ -21,7 +21,14 @@ app.get("/posts", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-// Authentication User
+    // Authentication User
+
+    const username = req.body.username;
+    const user = { name: username };
+
+    const acessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+    res.json({acessToken: acessToken});
+
 })
 
 app.listen(3000);
