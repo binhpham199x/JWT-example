@@ -1,8 +1,9 @@
+# get user infos by sending token in authorization header
 GET http://localhost:3000/posts
-Authorization: Bearer testsdaf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY5OTI4MjYwMX0.QPI4uWArW7u4OHYqt-Vw8Fp4yGH3oEv6GNL5MB6suho
 
 ###
-
+# login and get a Token
 POST http://localhost:3000/login
 Content-Type: application/json
 
