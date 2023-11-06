@@ -18,8 +18,11 @@ const posts = [
     }
 ]
 
-app.get("/posts", (req, res) => {
-    res.json(posts)
+app.get("/posts", authenticateToken, (req, res) => {
+    res.json({
+        "header": req.headers,
+        "body": posts
+    });
 })
 
 app.post("/login", (req, res) => {
@@ -32,5 +35,20 @@ app.post("/login", (req, res) => {
     res.json({ accessToken: accessToken });
 
 })
+
+function authenticateToken(req, res, next) {
+    // Example of authorization part of header: "authorization": "Bearer reugndsvbb23409thbsenfd..."
+
+    const authHeader = req.headers["authorization"];
+    const token = authHeader.split(" ")[1] ?? null;
+
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) =>{
+        if(err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    })
+}
 
 app.listen(3000);
