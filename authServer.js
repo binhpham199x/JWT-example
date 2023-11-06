@@ -7,23 +7,6 @@ const jwt = require("jsonwebtoken");
 
 app.use(express.json());
 
-// database for users
-const posts = [
-    {
-        username: "Kyle",
-        title: "Post 1"
-    },
-    {
-        username: "Jim",
-        title: "Post 2"
-    }
-]
-
-app.get("/posts", authenticateToken, (req, res) => {
-    
-    res.json(posts.filter((post) => post.username == req.user.name));
-})
-
 app.post("/login", (req, res) => {
     // Authentication User
 
@@ -43,8 +26,8 @@ function authenticateToken(req, res, next) {
 
     if (token == null) return res.sendStatus(401);
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) =>{
-        if(err) return res.sendStatus(403);
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
         req.user = user;
         next();
     })
